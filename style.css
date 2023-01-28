@@ -101,3 +101,13 @@ h2 {
 .pokeWeight {
   text-align: center;
 }
+
+
+
+#pokeInput {
+  color: rgb(170, 170, 170)
+}
+
+#randomSearchInput {
+  color: rgb(0, 0, 0);
+}

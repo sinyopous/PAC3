@@ -120,18 +120,52 @@ const createPokeCard = (array) => {
     let pokeCard = document.createElement("section");
     document.getElementById("pokeListBox").appendChild(pokeCard);
     pokeCard.setAttribute("id", `pokeCard${i}`);
-    document.getElementById(`pokeCard${i}`).innerHTML = cardHTML;
+    document.getElementById(`pokeCard${i}`).innerHTML = `<section class="pokeCardFront">
+    <h2 id="pokeName${i}" class="pokeName"></h2>
+    <img
+      id="pokePortrait${i}"
+      class="pokePortrait"
+      src=""
+      alt="pokemon image"
+    />
+    <section class="idTypeFlexbox">
+      <p id="pokeId${i}" class="pokeId"></p>
+      <img
+        src="assets/expand_more_FILL0_wght400_GRAD0_opsz48.svg"
+        alt=""
+      />
+      <p id="pokeType${i}" class="pokeType"></p>
+    </section>
+  </section>
+  <section class="pokeCardBack">
+    <img
+      id="pokeAssPortrait${i}"
+      class="pokeAssPortrait"
+      src=""
+      alt=""
+    />
+    <p class="pokeHeight">Height: <span id="pokeHeight${i}"></span></p>
+    <p class="pokeWeight">Weight: <span id="pokeWeight${i}"></span></p>
+  </section>
+  `;
   }
 };
 
 const printPokeCards = (array) => {
-  for (let id of array) {
+  for (let i = 0; i < array.length;i++) {
     let frontImage;
     let backImage;
-    console.log(`https://pokeapi.co/api/v2/pokemon/${id}/`);
-    fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+    console.log(`https://pokeapi.co/api/v2/pokemon/${array[i]}/`);
+    fetch(`https://pokeapi.co/api/v2/pokemon/${array[i]}/`)
     .then(x => x.json())
     .then(y =>{
+      document.getElementById(`pokeName${i}`).innerHTML = y.name;
+      document.getElementById(`pokePortrait${i}`).src = y.sprites.front_default;
+      document.getElementById(`pokeId${i}`).innerHTML = `#${y.id}`;
+      document.getElementById(`pokeType${i}`).innerHTML = y.types[0].type.name;
+      document.getElementById(`pokeAssPortrait${i}`).src = y.sprites.back_default;
+      document.getElementById(`pokeHeight${i}`).innerHTML = y.height;
+      document.getElementById(`pokeWeight${i}`).innerHTML = y.weight;
       console.log(y.height)
       console.log(y.weight)
       console.log(y.name)
