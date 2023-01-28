@@ -1,0 +1,103 @@
+@font-face {
+  font-family: "gameboy";
+  src: url(assets/Early\ GameBoy.ttf);
+}
+
+@font-face {
+  font-family: "superMario";
+  src: url(assets/SuperMarioBros2.ttf);
+}
+
+@font-face {
+  font-family: "eightbit";
+  src: url(assets/8-bitArcadeIn.ttf);
+}
+
+* {
+  color: rgb(37, 36, 35);
+  font-family: gameboy;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(235, 231, 228);
+}
+
+h1 {
+  font-family: eightbit;
+  margin: auto;
+  text-align: center;
+  border: double 5px rgb(37, 36, 35);
+  font-size: 100px;
+}
+
+h2 {
+  text-align: center;
+}
+
+
+.pokeListBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.pokeName {
+  grid-area: pokeName;
+  margin: 20px 0 0 0;
+}
+
+.pokePortrait {
+  align-self: center;
+  justify-self: center;
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
+  grid-area: pokePortrait;
+}
+
+.idTypeFlexbox {
+  display: flex;
+  justify-content: space-between;
+  grid-area: flexBox;
+  margin: 0 15px;
+}
+
+.pokeCardFront {
+  width: 250px;
+  display: grid;
+  grid-template-areas:
+    "pokeName"
+    "pokePortrait"
+    "flexBox";
+  border: 8px double rgb(24, 24, 24);
+}
+
+.pokeAssPortrait {
+  align-self: center;
+  justify-self: center;
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
+  grid-area: pokeAssPortrait;
+}
+
+.pokeCardBack {
+  width: 250px;
+  display: grid;
+  grid-template-areas:
+    "pokeAssPortrait"
+    "pokePortrait"
+    "flexBox";
+  border: 8px double rgb(24, 24, 24);
+}
+
+.pokeHeight,
+.pokeWeight {
+  text-align: center;
+}

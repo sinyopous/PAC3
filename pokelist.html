@@ -1,12 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <section>
+      <section id="pokeListBox" class="pokeListBox">
+        <!-- <section class="pokeCardFront">
+          <h2 class="pokeName">venusaur</h2>
+          <img
+            class="pokePortrait"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
+            alt="pokemon image"
+          />
+          <section class="idTypeFlexbox">
+            <p class="pokeId">#0023</p>
+            <img
+              src="assets\expand_more_FILL0_wght400_GRAD0_opsz48.svg"
+              alt=""
+            />
+            <p class="pokeType">grass</p>
+          </section>
+        </section>
+        <section class="pokeCardBack">
+          <img
+            class="pokeAssPortrait"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/3.png"
+            alt=""
+          />
+          <p class="pokeHeight">Height: <span id="pokeHeight">0</span></p>
+          <p class="pokeWeight">Weight: <span id="pokeWeight">0</span></p>
+        </section> -->
+      </section>
+      <section>
+        <img
+          id="raiseNumber"
+          src="assets\expand_less_FILL0_wght400_GRAD0_opsz48.svg"
+          alt=""
+        />
+        <label for=""
+          >Or get <span id="randomSearchInput">0</span> random pokemon!</label
+        >
+        <input id="luckyButton" type="button" value="let's get lucky!" />
+        <img
+          id="lowerNumber"
+          src="assets\expand_more_FILL0_wght400_GRAD0_opsz48.svg"
+          alt=""
+        />
+      </section>
+    </section>
+  </body>
 </html>

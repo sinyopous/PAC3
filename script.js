@@ -5,8 +5,35 @@ let raiseButton = document.getElementById("raiseNumber");
 let lowerButton = document.getElementById("lowerNumber");
 let luckyButton = document.getElementById("luckyButton");
 let pokeApi = "https://pokeapi.co/api/v2/pokemon?limit=100000";
+let pokeListUrl = "pokelist.html";
 let randomNumArray = [];
 let directionsArray = [];
+let cardHTML = `<section class="pokeCardFront">
+  <h2 class="pokeName">venusaur</h2>
+  <img
+    class="pokePortrait"
+    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
+    alt="pokemon image"
+  />
+  <section class="idTypeFlexbox">
+    <p class="pokeId">#0023</p>
+    <img
+      src="assets\expand_more_FILL0_wght400_GRAD0_opsz48.svg"
+      alt=""
+    />
+    <p class="pokeType">grass</p>
+  </section>
+</section>
+<section class="pokeCardBack">
+  <img
+    class="pokeAssPortrait"
+    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/3.png"
+    alt=""
+  />
+  <p class="pokeHeight">Height: <span id="pokeHeight">0</span></p>
+  <p class="pokeWeight">Weight: <span id="pokeWeight">0</span></p>
+</section>
+`;
 
 //----------------FUNCTIONS--------------------
 
@@ -50,16 +77,16 @@ const CreateRandomNumArray = () => {
 };
 
 const fetchPokeIdArray = (api, idsArray) => {
-  directionsArray = [];
+  //directionsArray = [];
   fetch(api)
     .then((x) => x.json())
     .then((y) => {
-      console.dir(y);
+      //console.dir(y);
       idsArray.forEach((id) => {
         directionsArray.push(y.results[id].url);
       });
     });
-  console.dir(directionsArray);
+  //console.dir(directionsArray);
 };
 
 const searchByIndex = () => {
@@ -83,21 +110,62 @@ const searchByIndex = () => {
         });
     });
 };
+
+const changeUrl = (url) => {
+  document.location.href = url;
+};
+
+const createPokeCard = (array) => {
+  for (let i = 0; i < array.length; i++) {
+    let pokeCard = document.createElement("section");
+    document.getElementById("pokeListBox").appendChild(pokeCard);
+    pokeCard.setAttribute("id", `pokeCard${i}`);
+    document.getElementById(`pokeCard${i}`).innerHTML = cardHTML;
+  }
+};
+
+const printPokeCards = (array) => {
+  for (let id of array) {
+    let frontImage;
+    let backImage;
+    console.log(`https://pokeapi.co/api/v2/pokemon/${id}/`);
+    fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+    .then(x => x.json())
+    .then(y =>{
+      console.log(y.height)
+      console.log(y.weight)
+      console.log(y.name)
+      console.log(y.types[0].type.name)
+      console.log(y.id)
+      frontImage = y.sprites.front_default;
+      backImage = y.sprites.back_default;
+    })
+  }
+  
+};
+
 //-----------------EVENTS FUNCTIONS---------------------
 const LetsGetLucky = () => {
   CreateRandomNumArray();
   fetchPokeIdArray(pokeApi, randomNumArray);
+  createPokeCard(randomNumArray);
+  printPokeCards(randomNumArray);
 };
 
 const clickSearchButton = () => {
   pokedexLog();
   searchByIndex();
 };
+
+const clickChangeWeb = () => {
+  changeUrl(pokeListUrl);
+};
 //----------------EVENTS-------------------
 raiseButton.addEventListener("click", raiseNumber);
 lowerButton.addEventListener("click", lowerNumber);
 luckyButton.addEventListener("click", LetsGetLucky);
 pokeButton.addEventListener("click", clickSearchButton);
+luckyButton.addEventListener("click", clickChangeWeb);
 
 // const findIndexOfPokemon = (searchPokemon) => {
 //     pokedex.results.findIndex(pokemon => {
