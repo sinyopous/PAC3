@@ -17,7 +17,7 @@
   color: rgb(104, 107, 96);
   font-family: gameboy;
   filter: blur(0.4px);
-  }
+}
 
 html {
   scroll-behavior: smooth;
@@ -47,6 +47,18 @@ h2 {
   filter: blur(0.8px);
 }
 
+#gameboyColorLogo {
+  margin: -300px auto -200px;
+  display: block;
+}
+
+#redDot {
+  height: 60px;
+  position: absolute;
+  top: 320px;
+  left: 30px;
+}
+
 #gameboyScreen {
   background-color: rgb(189, 194, 185);
   max-width: 1550px;
@@ -59,7 +71,6 @@ h2 {
   align-items: center;
   justify-content: center;
   padding: 50px 0;
-  
 }
 .pokeListBox {
   /* margin: 50px; */
@@ -115,15 +126,20 @@ h2 {
   opacity: 80%;
 }
 
+.backArrow {
+  grid-area: backArrow;
+  justify-self: center;
+}
+
 .pokeCardBack {
   width: 250px;
   display: none;
   grid-template-areas:
+    "backArrow"
     "pokeAssPortrait"
     "pokePortrait"
     "flexBox";
   border: 8px double rgb(104, 107, 96);
-
 }
 
 .pokeHeight,
@@ -167,5 +183,13 @@ h2 {
 }
 
 .arrows {
+  cursor: pointer;
+}
+
+#swapCardsButton {
+  display: none;
+}
+
+#swapCardsButton:hover {
   cursor: pointer;
 }
