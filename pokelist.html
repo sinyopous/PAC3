@@ -9,7 +9,8 @@
     <script defer src="script.js"></script>
   </head>
   <body>
-    <section>
+    <section id="gameboyBody">
+    <section id="gameboyScreen">
       <section id="pokeListBox" class="pokeListBox">
         <!-- <section class="pokeCardFront">
           <h2 class="pokeName">venusaur</h2>
@@ -37,22 +38,44 @@
           <p class="pokeWeight">Weight: <span id="pokeWeight">0</span></p>
         </section> -->
       </section>
-      <section>
-        <img
-          id="raiseNumber"
-          src="assets\expand_less_FILL0_wght400_GRAD0_opsz48.svg"
-          alt=""
-        />
+
+      <!-- <section id="pokeInputFlexbox">
         <label id="pokeInput" for=""
-          >Or get <span id="randomSearchInput">0</span> random pokemon!</label
+          >Or get
+          <span id="changeNumberBox">
+            <img
+              id="raiseNumber"
+              src="assets\expand_less_FILL0_wght400_GRAD0_opsz48.svg"
+              alt="" />
+            <span id="randomSearchInput">0</span>
+            <img
+              id="lowerNumber"
+              src="assets\expand_more_FILL0_wght400_GRAD0_opsz48.svg"
+              alt=""
+          /></span>
+          random pokemon!</label
         >
-        <input id="luckyButton" type="button" value="let's get lucky!" />
-        <img
-          id="lowerNumber"
-          src="assets\expand_more_FILL0_wght400_GRAD0_opsz48.svg"
-          alt=""
-        />
+        <p id="luckyButton">Let's get lucky!</p> -->
+      <section id="pokeInputFlexbox">
+        <p class="pokeInput">Or get</p>
+        <span id="changeNumberBox">
+          <img
+            class="arrows"
+            id="raiseNumber"
+            src="assets\expand_less_FILL0_wght400_GRAD0_opsz48.svg"
+            alt="" />
+          <span id="randomSearchInput">0</span>
+          <img
+            class="arrows"
+            id="lowerNumber"
+            src="assets\expand_more_FILL0_wght400_GRAD0_opsz48.svg"
+            alt=""
+        /></span>
+        <p class="pokeInput">random pokemon!</p>
+        <p id="luckyButton">Let's get lucky!</p>
+        <!-- <input  type="button" value="let's get lucky!" /> -->
       </section>
     </section>
+  </section>
   </body>
 </html>

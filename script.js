@@ -178,12 +178,17 @@ const printPokeCards = (array) => {
   
 };
 
+const hideLuckyButton = () => {
+  document.getElementById("pokeInputFlexbox").style.display = 'none';
+};
+
 //-----------------EVENTS FUNCTIONS---------------------
 const LetsGetLucky = () => {
   CreateRandomNumArray();
   fetchPokeIdArray(pokeApi, randomNumArray);
   createPokeCard(randomNumArray);
   printPokeCards(randomNumArray);
+  hideLuckyButton();
 };
 
 const clickSearchButton = () => {
@@ -191,15 +196,15 @@ const clickSearchButton = () => {
   searchByIndex();
 };
 
-const clickChangeWeb = () => {
-  changeUrl(pokeListUrl);
-};
+// const clickChangeWeb = () => {
+//   changeUrl(pokeListUrl);
+// };
 //----------------EVENTS-------------------
 raiseButton.addEventListener("click", raiseNumber);
 lowerButton.addEventListener("click", lowerNumber);
 luckyButton.addEventListener("click", LetsGetLucky);
 pokeButton.addEventListener("click", clickSearchButton);
-luckyButton.addEventListener("click", clickChangeWeb);
+// luckyButton.addEventListener("click", clickChangeWeb);
 
 // const findIndexOfPokemon = (searchPokemon) => {
 //     pokedex.results.findIndex(pokemon => {

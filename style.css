@@ -14,23 +14,24 @@
 }
 
 * {
-  color: rgb(37, 36, 35);
+  color: rgb(104, 107, 96);
   font-family: gameboy;
-}
+  filter: blur(0.4px);
+  }
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: rgb(235, 231, 228);
+  background-color: rgb(196, 135, 2);
 }
 
 h1 {
   font-family: eightbit;
   margin: auto;
   text-align: center;
-  border: double 5px rgb(37, 36, 35);
+  border: double 5px rgb(37, 37, 35);
   font-size: 100px;
 }
 
@@ -38,18 +39,41 @@ h2 {
   text-align: center;
 }
 
+#gameboyBody {
+  background-color: rgb(24, 24, 24);
+  border-radius: 30px;
+  padding: 20px 0;
+  border: solid 3px rgb(136, 93, 1);
+  filter: blur(0.8px);
+}
 
+#gameboyScreen {
+  background-color: rgb(189, 194, 185);
+  max-width: 1550px;
+  min-height: 750px;
+  margin: 100px auto;
+  border-radius: 5px;
+  border: 5px rgb(14, 14, 14) solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0;
+  
+}
 .pokeListBox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
+  /* margin: 50px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .pokeName {
   grid-area: pokeName;
   margin: 20px 0 0 0;
+  font-size: 20px;
 }
 
 .pokePortrait {
@@ -59,6 +83,8 @@ h2 {
   height: 100%;
   /* object-fit: cover; */
   grid-area: pokePortrait;
+  filter: grayscale(70%);
+  opacity: 80%;
 }
 
 .idTypeFlexbox {
@@ -75,7 +101,7 @@ h2 {
     "pokeName"
     "pokePortrait"
     "flexBox";
-  border: 8px double rgb(24, 24, 24);
+  border: 8px double rgb(104, 107, 96);
 }
 
 .pokeAssPortrait {
@@ -85,16 +111,19 @@ h2 {
   height: 100%;
   /* object-fit: cover; */
   grid-area: pokeAssPortrait;
+  filter: grayscale(70%);
+  opacity: 80%;
 }
 
 .pokeCardBack {
   width: 250px;
-  display: grid;
+  display: none;
   grid-template-areas:
     "pokeAssPortrait"
     "pokePortrait"
     "flexBox";
-  border: 8px double rgb(24, 24, 24);
+  border: 8px double rgb(104, 107, 96);
+
 }
 
 .pokeHeight,
@@ -102,12 +131,41 @@ h2 {
   text-align: center;
 }
 
+.pokeInput {
+  color: rgb(131, 134, 129);
+}
 
+#changeNumberBox {
+  width: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: rgb(0, 0, 0);
+}
 
-#pokeInput {
-  color: rgb(170, 170, 170)
+#pokeInputFlexbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 10px;
 }
 
 #randomSearchInput {
-  color: rgb(0, 0, 0);
+  margin-left: 3px;
+  color: rgb(35, 36, 32);
+}
+
+#luckyButton:hover {
+  color: rgb(29, 143, 0);
+  cursor: pointer;
+}
+
+#luckyButton {
+  margin: 0 15px;
+}
+
+.arrows {
+  cursor: pointer;
 }
