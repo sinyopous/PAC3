@@ -9,19 +9,38 @@
     <script defer src="indexScript.js"></script>
     <script defer src="script.js"></script>
   </head>
+  
   <body>
+
     <section id="gameboyBody">
+
       <img id="redDot" src="assets\redDot.png" alt="">
       <section id="gameboyScreen">
         
         <section id="pokeListBox" class="pokeListBox">
 
           <template id="templateSimpleCard">
-            <section id="" class="pokeSimpleCard">
+            <section id="" class="pokeSimpleCard" onclick="swapDisplay(this)">
             <img class="pokePortrait" src="" alt="MissingN0">
             <h2 class="pokeName2"></h2>
             </section>
           </template>
+
+          <section class="pokeStatsCard">
+            <section class="pokePortraitsGrid">
+              <img class="pokePortraitStats" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png" alt="">
+              <img class="pokePortraitStats" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png" alt="">
+              <img class="pokePortraitStats" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png" alt="">
+              <img class="pokePortraitStats" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png" alt="">
+            </section>
+            <section>
+              <p>Name:</p>
+              <p>Id:</p>
+              <p>Type:</p>
+              <p>Attack:</p>
+              <p>Defense:</p>
+            </section>
+          </section>
 
         </section>
 
@@ -49,12 +68,13 @@
             <p class="pokeInput">random pokemon!</p>
             <p id="luckyButton">Let's get lucky!</p>
         </section>
+        <p id="swapCardsButton">swap</p>
 
       </section>
-      <p id="swapCardsButton">swap</p>
+      
+
     </section>
     
-  </section>
   </body>
 </html>
 </html>

@@ -53,7 +53,7 @@ const getIdsUrls = (array, url) => {
   //console.log(pokeUrls);
 };
 
-const megaFunc = (array, url) => {
+const print10RandomCards = (array, url) => {
   fetch(url)
     .then((x) => x.json())
     .then((y) => {
@@ -94,8 +94,12 @@ const megaFunc = (array, url) => {
             let image = clonedTemplate.querySelector(".pokePortrait");
             let pokeName = clonedTemplate.querySelector(".pokeName2");
 
-            card.setAttribute('id', ef.id);
-            image.setAttribute('src', ef.sprites.front_default);
+            card.setAttribute("id", ef.id);
+            if (ef.sprites.front_default) {
+              image.setAttribute("src", ef.sprites.front_default);
+            } else {
+              image.setAttribute("src", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/132.png")
+            }
             pokeName.innerHTML = ef.name;
             // card.addEventListener('click', funcionasion);
 
@@ -144,9 +148,19 @@ const fetchArrayAsync = (url, array) => {
   });
 };
 
+const swapDisplay = (target) => {
+  document.getElementById("pokeInputFlexbox").style.display = "none";
+  document.getElementById("pokeSearchBar").style.display = "none";
+  let simpleCards = document.querySelectorAll(".pokeSimpleCard");
+  simpleCards.forEach( x => x.style.display = 'none');
+
+  document.querySelector('.pokeStatsCard').style.display = 'flex';
+  document.getElementById(`${target.id}`).style.display = 'none';
+}
+
 createRandomIdsArray();
 //getIdsUrls(randomNumsArray, pkApi);
-megaFunc(randomNumsArray, pkApi);
+print10RandomCards(randomNumsArray, pkApi);
 //consultFetch(pkApi);
 //getIdsAccesUrls(pkApi);
 //console.dir(pokeUrls);

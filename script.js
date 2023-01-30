@@ -199,6 +199,8 @@ const printPokeCards = (array) => {
 const hideLuckyButton = () => {
   document.getElementById("pokeInputFlexbox").style.display = "none";
   document.getElementById("pokeSearchBar").style.display = "none";
+  let simpleCards = document.querySelectorAll(".pokeSimpleCard");
+  simpleCards.forEach( x => x.style.display = 'none');
 };
 
 const showSwapButton = () => {
