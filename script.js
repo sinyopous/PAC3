@@ -72,8 +72,10 @@ const CreateRandomNumArray = () => {
   randomNumArray = [];
   while (randomNum > i) {
     let num = getRandomPokeId();
-    randomNumArray.push(num);
-    i++;
+    if (randomNumArray.every((x) => x !== num)) {
+      randomNumArray.push(num);
+      i++;
+    }
   }
 
   console.dir(randomNumArray);
@@ -196,6 +198,7 @@ const printPokeCards = (array) => {
 
 const hideLuckyButton = () => {
   document.getElementById("pokeInputFlexbox").style.display = "none";
+  document.getElementById("pokeSearchBar").style.display = "none";
 };
 
 const showSwapButton = () => {
@@ -204,22 +207,21 @@ const showSwapButton = () => {
 
 const swapCards = () => {
   console.log("working");
-    let front = document.querySelectorAll(".pokeCardFront");
-    let back = document.querySelectorAll(".pokeCardBack");
+  let front = document.querySelectorAll(".pokeCardFront");
+  let back = document.querySelectorAll(".pokeCardBack");
   if (document.querySelector(".pokeCardFront").style.display === "grid") {
-    front.forEach(x => x.style.display = "none");
-    back.forEach(x => x.style.display = "grid");
+    front.forEach((x) => (x.style.display = "none"));
+    back.forEach((x) => (x.style.display = "grid"));
   } else {
-    front.forEach(x => x.style.display = "grid");
-    back.forEach(x => x.style.display = "none");
+    front.forEach((x) => (x.style.display = "grid"));
+    back.forEach((x) => (x.style.display = "none"));
   }
 };
 
 const swapSingleCard = () => {
   let frontButtons = document.querySelectorAll(".frontArrow");
   let backButtons = document.querySelectorAll(".backArrow");
-  
-}
+};
 
 //-----------------EVENTS FUNCTIONS---------------------
 const LetsGetLucky = () => {
