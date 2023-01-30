@@ -3,7 +3,7 @@ let randomNumsArray = [];
 let pokeUrls = [];
 let pkApi = "https://pokeapi.co/api/v2/pokemon?limit=10000";
 let pkUrl = "https://pokeapi.co/api/v2/pokemon/";
-let z = [];
+
 //-----------------FUNCTIONS---------------
 
 const consultFetch = (url) => {
@@ -66,23 +66,23 @@ const print10RandomCards = (array, url) => {
           }
         }
       }
-
+      
       console.dir(pokeUrls);
       //-------------------
       pokeUrls.forEach((ab) => {
         fetch(ab)
           .then((cd) => cd.json())
           .then((ef) => {
-            console.dir(ef);
-            console.log(ef.name);
-            console.log(ef.id);
-            console.log(ef.sprites.front_default);
-            console.log(ef.sprites.back_default);
-            console.log(`attack: ${ef.stats[1].base_stat}`);
-            console.log(`defense: ${ef.stats[2].base_stat}`);
+            // console.dir(ef);
+            // console.log(ef.name);
+            // console.log(ef.id);
+            // console.log(ef.sprites.front_default);
+            // console.log(ef.sprites.back_default);
+            // console.log(`attack: ${ef.stats[1].base_stat}`);
+            // console.log(`defense: ${ef.stats[2].base_stat}`);
 
             ef.types.forEach((jk) => {
-              console.log(jk.type.name);
+              // console.log(jk.type.name);
             });
             //-------------PRINT TEMPLATE-------------
 
@@ -166,3 +166,5 @@ print10RandomCards(randomNumsArray, pkApi);
 //console.dir(pokeUrls);
 //fetchArray(pokeUrls);
 //fetchArrayAsync(pkUrl, randomNumsArray);
+
+console.dir(pokeUrls);
