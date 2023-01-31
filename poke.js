@@ -1,5 +1,6 @@
 const pokeApi = "https://pokeapi.co/api/v2/pokemon?limit=10000";
 const totalNumOfPokemon = 1279;
+const smallArray = [1,2,3];
 let numOfPokemonToFetch =
   document.getElementById("randomSearchInput").innerHTML;
 let raiseButton = document.getElementById("raiseNumber");
@@ -104,8 +105,9 @@ const swapDisplay = (target) => {
 
 //------------------GET LUCKY BUTTON----------------------
 const raiseNumber = () => {
-  document.getElementById("randomSearchInput").innerHTML++;
-  numOfPokemonToFetch++;
+  if (numOfPokemonToFetch < totalNumOfPokemon)
+  {document.getElementById("randomSearchInput").innerHTML++;
+  numOfPokemonToFetch++;}
 };
 
 const lowerNumber = () => {
@@ -126,14 +128,33 @@ const LetsGetLucky = () => {
 };
 
 
+const luckyButtonPlay = (array) => {
+  if (document.getElementById("orderedPokemonCheck").checked === true) {
+    orderedPokemon(array);
+  } else {
+    LetsGetLucky();
+  }
+};
+
 //----------------------WORK IN ORDERD POKELIST, CREATE A FUNC THAT GENERATES AN ARRAY OF NUMBERS FROM 0 TO MAX OF POKEMON-------------
 
 const orderedPokemon = (array) => {
   hideScreenElements();
-  randomNumArray = array;
+  //------------------------------MANIPULATE ORDEREDARRAY TO BE THE LENGTH OF INPUT------------------
+  orderedArray = orderedArray.filter(num => num <= numOfPokemonToFetch);
+  randomNumArray = orderedArray;
+  console.dir(randomNumArray);
   randomIdAccesUrls = getXRandomAccesUrls();
   printXRandomCards();
 };
+
+const generateOrderedArray = (num) => {
+  let array = [];
+  for (let i = 0; i < num; i++){
+    array.push(i);
+  }
+  return array
+}
 
 const hideScreenElements = () => {
   document.getElementById("pokeInputFlexbox").style.display = "none";
@@ -152,13 +173,13 @@ let randomNumArray = createRandomNumsArray(
 
 let idAccesUrls = getIdsAccesUrls();
 let randomIdAccesUrls = getXRandomAccesUrls();
-
+let orderedArray = generateOrderedArray(totalNumOfPokemon);
 //-----------------EVENT LISTENERS-------------------------
 raiseButton.addEventListener("click", raiseNumber);
 raiseButton.addEventListener("drag", raiseNumber);
 lowerButton.addEventListener("click", lowerNumber);
 lowerButton.addEventListener("drag", lowerNumber);
-luckyButton.addEventListener("click", LetsGetLucky);
+luckyButton.addEventListener("click", luckyButtonPlay);
 
 //--------------COM USAR LA INFO QUE RETORNA UNA PROMESA (.then)-----------------------
 
