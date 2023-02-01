@@ -1,6 +1,13 @@
 const pokeApi = "https://pokeapi.co/api/v2/pokemon?limit=10000";
 const totalNumOfPokemon = 1279;
-const smallArray = [1,2,3];
+const dittoFace =
+  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png";
+const dittoAss =
+  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/132.png";
+const dittoShinyFace =
+  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/132.png";
+const dittoShinyAss =
+  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/132.png";
 let numOfPokemonToFetch =
   document.getElementById("randomSearchInput").innerHTML;
 let raiseButton = document.getElementById("raiseNumber");
@@ -79,35 +86,80 @@ const printXRandomCards = () => {
           if (y.sprites.front_default) {
             image.setAttribute("src", y.sprites.front_default);
           } else {
-            image.setAttribute(
-              "src",
-              "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/132.png"
-            );
+            image.setAttribute("src", dittoShinyFace);
           }
           pokeName.innerHTML = y.name;
-          // card.addEventListener('click', funcionasion);
 
           out.appendChild(clonedTemplate);
+
+          //----------------------PRINT STATSCARD TEMPLATE----------------------
+
+          const templateStats = document.getElementById("pokeStatsCard");
+          const clonedTemplateStats = templateStats.content.cloneNode(true);
+
+          let cardStats = clonedTemplateStats.querySelector(".pokeStatsCard");
+          let imageStatsFront =
+            clonedTemplateStats.querySelector("#imageStatsFront");
+          let imageStatsBack =
+            clonedTemplateStats.querySelector("#imageStatsBack");
+          let imageStatsFrontShiny = clonedTemplateStats.querySelector(
+            "#imageStatsFrontShiny"
+          );
+          let imageStatsBackShiny = clonedTemplateStats.querySelector(
+            "#imageStatsBackShiny"
+          );
+          let pokeNameStats =
+            clonedTemplateStats.querySelector("#pokeNameStat");
+          let pokeIdStats = clonedTemplateStats.querySelector("#pokeIdStat");
+          let pokeTypeStats =
+            clonedTemplateStats.querySelector("#pokeTypeStat");
+          let pokeAttackStats =
+            clonedTemplateStats.querySelector("#pokeAttackStat");
+          let pokeDefenseStats =
+            clonedTemplateStats.querySelector("#pokeDefenseStat");
+
+          cardStats.setAttribute("id", `stats${y.id}`);
+          printImage(imageStatsFront, y.sprites.front_default, dittoFace);
+          printImage(imageStatsBack, y.sprites.back_default, dittoAss);
+          printImage(
+            imageStatsFrontShiny,
+            y.sprites.front_shiny,
+            dittoShinyFace
+          );
+          printImage(imageStatsBackShiny, y.sprites.back_shiny, dittoShinyAss);
+          pokeNameStats.innerHTML += y.name;
+          pokeIdStats.innerHTML += y.id;
+          let i = 0;
+          do {
+            pokeTypeStats.innerHTML += `${y.types[i].type.name}<br>`;
+            i++;
+          } while (y.types.length > i);
+
+          pokeAttackStats.innerHTML += y.stats[1].base_stat;
+          pokeDefenseStats.innerHTML += y.stats[2].base_stat;
+
+          out.appendChild(clonedTemplateStats);
         });
     });
   });
 };
 
 const swapDisplay = (target) => {
+  console.log(target.id);
+  console.log(`stats${target.id}`);
   document.getElementById("pokeInputFlexbox").style.display = "none";
   document.getElementById("pokeSearchBar").style.display = "none";
   let simpleCards = document.querySelectorAll(".pokeSimpleCard");
   simpleCards.forEach((x) => (x.style.display = "none"));
-
-  document.querySelector(".pokeStatsCard").style.display = "flex";
-  document.getElementById(`${target.id}`).style.display = "none";
+  document.getElementById(`stats${target.id}`).style.display = "grid";
 };
 
 //------------------GET LUCKY BUTTON----------------------
 const raiseNumber = () => {
-  if (numOfPokemonToFetch < totalNumOfPokemon)
-  {document.getElementById("randomSearchInput").innerHTML++;
-  numOfPokemonToFetch++;}
+  if (numOfPokemonToFetch < totalNumOfPokemon) {
+    document.getElementById("randomSearchInput").innerHTML++;
+    numOfPokemonToFetch++;
+  }
 };
 
 const lowerNumber = () => {
@@ -127,7 +179,6 @@ const LetsGetLucky = () => {
   printXRandomCards();
 };
 
-
 const luckyButtonPlay = (array) => {
   if (document.getElementById("orderedPokemonCheck").checked === true) {
     orderedPokemon(array);
@@ -136,12 +187,11 @@ const luckyButtonPlay = (array) => {
   }
 };
 
-//----------------------WORK IN ORDERD POKELIST, CREATE A FUNC THAT GENERATES AN ARRAY OF NUMBERS FROM 0 TO MAX OF POKEMON-------------
+//----------------------ORDERED POKELIST-------------
 
 const orderedPokemon = (array) => {
   hideScreenElements();
-  //------------------------------MANIPULATE ORDEREDARRAY TO BE THE LENGTH OF INPUT------------------
-  orderedArray = orderedArray.filter(num => num <= numOfPokemonToFetch);
+  orderedArray = orderedArray.filter((num) => num < numOfPokemonToFetch);
   randomNumArray = orderedArray;
   console.dir(randomNumArray);
   randomIdAccesUrls = getXRandomAccesUrls();
@@ -150,17 +200,67 @@ const orderedPokemon = (array) => {
 
 const generateOrderedArray = (num) => {
   let array = [];
-  for (let i = 0; i < num; i++){
+  for (let i = 0; i < num; i++) {
     array.push(i);
   }
-  return array
-}
+  return array;
+};
 
 const hideScreenElements = () => {
   document.getElementById("pokeInputFlexbox").style.display = "none";
   document.getElementById("pokeSearchBar").style.display = "none";
   let simpleCards = document.querySelectorAll(".pokeSimpleCard");
   simpleCards.forEach((x) => (x.style.display = "none"));
+  let statsCards = document.querySelectorAll(".pokeStatsCard");
+  statsCards.forEach((x) => (x.style.display = "none"));
+};
+
+//-----------------SEARCH BY ID IN URLBAR------------------------
+
+const searchUrlId = () => {
+  let params = new URLSearchParams(document.location.search);
+  let id = params.get("id");
+  return id;
+};
+
+//----------------------RETURN BUTTON-----------------------
+// const returnButton = document.querySelector("#returnButton");
+
+// const returnFunction = () => {
+//   console.log("funciona");
+// };
+//-------------------REDO THIS DESTROYING FIRST 10 CARDS WHEN PRESING GET LUCKY BUTTON(REDO GET LUCKY BUTTON)-----------
+const pokeReturn = () => {
+  let pokesOnScreen = document.querySelectorAll(".pokeSimpleCard");
+  let allPokeStatsCards = document.querySelectorAll(".pokeStatsCard");
+  let onePokeSimpleCard = document.querySelector(".pokeSimpleCard");
+  
+  let id = searchUrlId();
+  console.log(id);
+  if (
+    id === "number" &&
+    onePokeSimpleCard.style.display === "none"
+  ) {
+    allPokeStatsCards.forEach((x) => (x.style.display = "none"));
+    
+  } else if (onePokeSimpleCard.style.display === "none") {
+    pokesOnScreen.forEach((x) => (x.style.display = "flex"));
+    allPokeStatsCards.forEach((x) => (x.style.display = "none"));
+  } else if (searchUrlId() === null) {
+    document.location.reload();
+  } else {
+    history.back();
+  }
+};
+
+//-------------------TEMPLATEPRINT FUNCTIONS----------------------
+
+const printImage = (imageToPrint, spriteSrc, dittoSprite) => {
+  if (spriteSrc) {
+    imageToPrint.setAttribute("src", spriteSrc);
+  } else {
+    imageToPrint.setAttribute("src", dittoSprite);
+  }
 };
 
 //-------------------VARIABLES-------------------------------
@@ -180,6 +280,7 @@ raiseButton.addEventListener("drag", raiseNumber);
 lowerButton.addEventListener("click", lowerNumber);
 lowerButton.addEventListener("drag", lowerNumber);
 luckyButton.addEventListener("click", luckyButtonPlay);
+// returnButton.addEventListener("click", returnFunction);
 
 //--------------COM USAR LA INFO QUE RETORNA UNA PROMESA (.then)-----------------------
 
@@ -187,6 +288,17 @@ idAccesUrls.then((x) => console.dir(x));
 
 //--------------------------------------------------------------------------
 //--------------------------LOGCHECKS---------------------------------------
-console.dir(randomNumArray);
-randomIdAccesUrls.then((x) => console.dir(x));
-printXRandomCards();
+// console.dir(randomNumArray);
+// randomIdAccesUrls.then((x) => console.dir(x));
+
+//---------------------INITIAL LOAD-------------------------------
+
+if (searchUrlId()) {
+  hideScreenElements();
+  let oneIdArray = [];
+  oneIdArray.push(searchUrlId() - 1);
+  randomNumArray = oneIdArray;
+  printXRandomCards();
+} else {
+  printXRandomCards();
+}

@@ -16,6 +16,10 @@
       <img id="redDot" src="assets\redDot.png" alt="">
       <section id="gameboyScreen">
         
+        
+          <a id="returnButton" href="javascript:history.back()" onclick="pokeReturn()">return</a>
+       
+
         <section id="pokeListBox" class="pokeListBox">
 
           <template id="templateSimpleCard">
@@ -25,21 +29,23 @@
             </section>
           </template>
 
+         <template id="pokeStatsCard">
           <section class="pokeStatsCard">
             <section class="pokePortraitsGrid">
-              <img class="pokePortraitStats" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png" alt="">
-              <img class="pokePortraitStats" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png" alt="">
-              <img class="pokePortraitStats" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png" alt="">
-              <img class="pokePortraitStats" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png" alt="">
+              <img id="imageStatsFront" class="pokePortraitStats" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png" alt="">
+              <img id="imageStatsBack" class="pokePortraitStats" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png" alt="">
+              <img id="imageStatsFrontShiny" class="pokePortraitStats" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png" alt="">
+              <img id="imageStatsBackShiny" class="pokePortraitStats" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png" alt="">
             </section>
-            <section>
-              <p>Name:</p>
-              <p>Id:</p>
-              <p>Type:</p>
-              <p>Attack:</p>
-              <p>Defense:</p>
+            <section class="pokeStatsBox">
+              <p id="pokeNameStat" class="statsTitles"><span  class="bolderText">Name:</span><br> </p>
+              <p id="pokeIdStat" class="statsTitles"><span class="bolderText">Id:</span><br># </p>
+              <p id="pokeTypeStat" class="statsTitles"><span class="bolderText">Type:</span><br> </p>
+              <p id="pokeAttackStat" class="statsTitles"><span class="bolderText">Attack:</span><br> </p>
+              <p id="pokeDefenseStat" class="statsTitles"><span class="bolderText">Defense:</span><br> </p>
             </section>
           </section>
+         </template>
 
         </section>
 
