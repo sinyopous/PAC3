@@ -1,5 +1,6 @@
 const pokeApi = "https://pokeapi.co/api/v2/pokemon?limit=10000";
 const totalNumOfPokemon = 1279;
+let mainScreen = true;
 const dittoFace =
   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png";
 const dittoAss =
@@ -171,6 +172,9 @@ const lowerNumber = () => {
 
 const LetsGetLucky = () => {
   hideScreenElements();
+  document.querySelectorAll(".pokeSimpleCard").forEach((x) => x.remove());
+  document.querySelectorAll(".pokeStatsCard").forEach((x) => x.remove());
+  mainScreen = false;
   randomNumArray = createRandomNumsArray(
     totalNumOfPokemon,
     numOfPokemonToFetch
@@ -191,6 +195,9 @@ const luckyButtonPlay = (array) => {
 
 const orderedPokemon = (array) => {
   hideScreenElements();
+  document.querySelectorAll(".pokeSimpleCard").forEach((x) => x.remove());
+  document.querySelectorAll(".pokeStatsCard").forEach((x) => x.remove());
+  mainScreen = false;
   orderedArray = orderedArray.filter((num) => num < numOfPokemonToFetch);
   randomNumArray = orderedArray;
   console.dir(randomNumArray);
@@ -224,32 +231,46 @@ const searchUrlId = () => {
 };
 
 //----------------------RETURN BUTTON-----------------------
-// const returnButton = document.querySelector("#returnButton");
 
-// const returnFunction = () => {
-//   console.log("funciona");
-// };
-//-------------------REDO THIS DESTROYING FIRST 10 CARDS WHEN PRESING GET LUCKY BUTTON(REDO GET LUCKY BUTTON)-----------
 const pokeReturn = () => {
   let pokesOnScreen = document.querySelectorAll(".pokeSimpleCard");
   let allPokeStatsCards = document.querySelectorAll(".pokeStatsCard");
   let onePokeSimpleCard = document.querySelector(".pokeSimpleCard");
-  
+
   let id = searchUrlId();
-  console.log(id);
-  if (
-    id === "number" &&
-    onePokeSimpleCard.style.display === "none"
-  ) {
-    allPokeStatsCards.forEach((x) => (x.style.display = "none"));
-    
-  } else if (onePokeSimpleCard.style.display === "none") {
-    pokesOnScreen.forEach((x) => (x.style.display = "flex"));
-    allPokeStatsCards.forEach((x) => (x.style.display = "none"));
-  } else if (searchUrlId() === null) {
-    document.location.reload();
+
+  if (id) {
+    if (onePokeSimpleCard.style.display === "none") {
+      console.log(id);
+      console.log("case1");
+      pokesOnScreen.forEach((x) => (x.style.display = "flex"));
+      allPokeStatsCards.forEach((x) => (x.style.display = "none"));
+    } else {
+      console.log("case2");
+      window.history.back();
+    }
   } else {
-    history.back();
+    if (mainScreen) {
+      if (onePokeSimpleCard.style.display === "none") {
+        console.log("case3");
+        pokesOnScreen.forEach((x) => (x.style.display = "flex"));
+        allPokeStatsCards.forEach((x) => (x.style.display = "none"));
+        document.getElementById("pokeSearchBar").style.display = "block";
+        document.getElementById("pokeInputFlexbox").style.display = "flex";
+      } else {
+        console.log("case4");
+        document.location.reload();
+      }
+    } else if (!mainScreen) {
+      if (onePokeSimpleCard.style.display === "none") {
+        console.log("case5");
+        pokesOnScreen.forEach((x) => (x.style.display = "flex"));
+        allPokeStatsCards.forEach((x) => (x.style.display = "none"));
+      } else {
+        console.log("case6");
+        document.location.reload();
+      }
+    }
   }
 };
 
