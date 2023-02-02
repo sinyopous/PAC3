@@ -17,6 +17,11 @@
   color: rgb(104, 107, 96);
   font-family: gameboy;
   filter: blur(0.4px);
+  scroll-behavior: smooth;
+}
+
+::placeholder {
+  color: rgb(215, 221, 203);
 }
 
 html {

@@ -16,7 +16,12 @@
       <img id="redDot" src="assets\redDot.png" alt="">
       <section id="gameboyScreen">
         
-        
+        <label for="radioColor">color</label>
+        <input type="radio" name="theme" id="radioColor" value="color" checked>
+        <label for="radioBrick">brick</label>
+        <input type="radio" name="theme" id="radioBrick" value="brick">
+
+
           <a id="returnButton" onclick="pokeReturn()">return</a>
        
 
@@ -51,8 +56,8 @@
 
         <section id="pokeSearchBar">
           <label for="pokemonInput">pokesearch</label>
-          <input type name="pokemonInput" id="pokemonInput" />
-          <input id="pokeButton" type="button" value="go!" />
+          <input type="text" name="pokemonInput" id="pokemonInput" placeholder="pikachu" />
+          <!-- <input id="pokeButton" type="button" value="go!" /> -->
         </section>
 
         <section id="pokeInputFlexbox">
