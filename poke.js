@@ -142,6 +142,24 @@ const printXRandomCards = () => {
           pokeDefenseStats.innerHTML += y.stats[2].base_stat;
 
           out.appendChild(clonedTemplateStats);
+          //------------------------RETHEME NEW CARDS-------------------------
+          let allChildsInScreen = document.querySelectorAll(".screenChild");
+          let radioColorButton = document.getElementById("radioColor").checked;
+          //console.log(radioColorButton);
+          if (radioColorButton) {
+            //console.log(radioColorButton);
+            allChildsInScreen.forEach((x) => {
+              x.classList.remove("brick");
+              x.classList.add("color");
+            });
+          } else if (!radioColorButton) {
+            //console.log(radioColorButton);
+            allChildsInScreen.forEach((x) => {
+              x.classList.remove("color");
+              x.classList.add("brick");
+            });
+          }
+          //==================================================================
         });
     });
   });
@@ -431,12 +449,28 @@ const searchByActualInputName2 = () => {
             pokeDefenseStats.innerHTML += y.stats[2].base_stat;
 
             out.appendChild(clonedTemplateStats);
+            //------------------------RETHEME NEW CARDS-------------------------
+            let allChildsInScreen = document.querySelectorAll(".screenChild");
+            let radioColorButton =
+              document.getElementById("radioColor").checked;
+            console.log(radioColorButton);
+            if (radioColorButton) {
+              console.log(radioColorButton);
+              allChildsInScreen.forEach((x) => {
+                x.classList.remove("brick");
+                x.classList.add("color");
+              });
+            } else if (!radioColorButton) {
+              console.log(radioColorButton);
+              allChildsInScreen.forEach((x) => {
+                x.classList.remove("color");
+                x.classList.add("brick");
+              });
+            }
+            //==================================================================
           });
       });
     });
-
-    // randomIdAccesUrls = getNmesAccsUrls();
-    // printXRandomCards();
   }
 };
 
@@ -556,8 +590,10 @@ function changeTheme() {
   const pokeStatsCardTheme = document.querySelectorAll(".pokeStatsCard");
   const generalFontColor = document.querySelector("html");
   const randomPokeText = document.querySelectorAll(".pokeInput");
-  const arrowsTheme =  document.querySelectorAll(".arrows");
+  const arrowsTheme = document.querySelectorAll(".arrows");
   const statsTitlesTheme = document.querySelectorAll(".statsTitles");
+  const bolderTextTheme = document.querySelectorAll(".bolderText");
+  const simpleCardTextTheme = document.querySelectorAll(".pokeName2");
 
   if (this.value === "color") {
     gameboyBorder.classList.remove("brick");
@@ -569,6 +605,9 @@ function changeTheme() {
     body.classList.remove("brick");
     body.classList.add("color");
 
+    searchBar.classList.remove("brick");
+    searchBar.classList.add("color");
+
     pokeSimpleCardTheme.forEach((x) => {
       x.classList.remove("brick");
       x.classList.add("color");
@@ -578,7 +617,7 @@ function changeTheme() {
       x.classList.remove("brick");
       x.classList.add("color");
     });
-    
+
     randomPokeText.forEach((x) => {
       x.classList.remove("brick");
       x.classList.add("color");
@@ -593,9 +632,20 @@ function changeTheme() {
       x.classList.remove("brick");
       x.classList.add("color");
     });
-   
+
+    bolderTextTheme.forEach((x) => {
+      x.classList.remove("brick");
+      x.classList.add("color");
+    });
+
+    simpleCardTextTheme.forEach((x) => {
+      x.classList.remove("brick");
+      x.classList.add("color");
+    });
+
     generalFontColor.classList.remove("brick");
     generalFontColor.classList.add("color");
+    window.localStorage.setItem("tema", "color");
   } else if (this.value === "brick") {
     gameboyBorder.classList.remove("color");
     gameboyBorder.classList.add("brick");
@@ -606,6 +656,9 @@ function changeTheme() {
     body.classList.remove("color");
     body.classList.add("brick");
 
+    searchBar.classList.remove("color");
+    searchBar.classList.add("brick");
+
     pokeSimpleCardTheme.forEach((x) => {
       x.classList.remove("color");
       x.classList.add("brick");
@@ -630,14 +683,27 @@ function changeTheme() {
       x.classList.remove("color");
       x.classList.add("brick");
     });
-  
+
+    bolderTextTheme.forEach((x) => {
+      x.classList.remove("color");
+      x.classList.add("brick");
+    });
+
+    simpleCardTextTheme.forEach((x) => {
+      x.classList.remove("color");
+      x.classList.add("brick");
+    });
+
     generalFontColor.classList.remove("color");
     generalFontColor.classList.add("brick");
+    window.localStorage.setItem("tema", "brick");
   }
 }
 
 const radioButtons = document.querySelectorAll('input[name="theme"]');
-radioButtons.forEach((x) => x.addEventListener("change", changeTheme));
+radioButtons.forEach(function ah(x) {
+  x.addEventListener("change", changeTheme);
+});
 
 const radioBrick = document.getElementById("radioBrick");
 console.log(radioBrick.value);
@@ -649,5 +715,151 @@ const pokeSimpleCardTheme = document.querySelectorAll(".pokeSimpleCard");
 const pokeStatsCardTheme = document.querySelectorAll(".pokeStatsCard");
 const generalFontColor = document.querySelector("html");
 const randomPokeText = document.querySelectorAll(".pokeInput");
-const arrowsTheme =  document.querySelectorAll(".arrows");
+const arrowsTheme = document.querySelectorAll(".arrows");
 const statsTitlesTheme = document.querySelectorAll(".statsTitles");
+const bolderTextTheme = document.querySelectorAll(".bolderText");
+const simpleCardTextTheme = document.querySelectorAll(".pokeName2");
+const searchBar = document.querySelector("#pokemonInput");
+console.log(document.querySelector("#pokemonInput"));
+
+let themeColor = window.localStorage.getItem("tema");
+console.log(themeColor);
+
+function changeThemeLocal() {
+  console.log(themeColor);
+  const pokeSimpleCardTheme = document.querySelectorAll(".pokeSimpleCard");
+  const pokeStatsCardTheme = document.querySelectorAll(".pokeStatsCard");
+  const generalFontColor = document.querySelector("html");
+  const randomPokeText = document.querySelectorAll(".pokeInput");
+  const arrowsTheme = document.querySelectorAll(".arrows");
+  const statsTitlesTheme = document.querySelectorAll(".statsTitles");
+  const bolderTextTheme = document.querySelectorAll(".bolderText");
+  const simpleCardTextTheme = document.querySelectorAll(".pokeName2");
+
+  if (themeColor === "color") {
+    gameboyBorder.classList.remove("brick");
+    gameboyBorder.classList.add("color");
+
+    gameboyScreen.classList.remove("brick");
+    gameboyScreen.classList.add("color");
+
+    body.classList.remove("brick");
+    body.classList.add("color");
+
+    searchBar.classList.remove("brick");
+    searchBar.classList.add("color");
+
+    pokeSimpleCardTheme.forEach((x) => {
+      x.classList.remove("brick");
+      x.classList.add("color");
+    });
+
+    pokeStatsCardTheme.forEach((x) => {
+      x.classList.remove("brick");
+      x.classList.add("color");
+    });
+
+    randomPokeText.forEach((x) => {
+      x.classList.remove("brick");
+      x.classList.add("color");
+    });
+
+    arrowsTheme.forEach((x) => {
+      x.classList.remove("brick");
+      x.classList.add("color");
+    });
+
+    statsTitlesTheme.forEach((x) => {
+      x.classList.remove("brick");
+      x.classList.add("color");
+    });
+
+    bolderTextTheme.forEach((x) => {
+      x.classList.remove("brick");
+      x.classList.add("color");
+    });
+
+    simpleCardTextTheme.forEach((x) => {
+      x.classList.remove("brick");
+      x.classList.add("color");
+    });
+
+    generalFontColor.classList.remove("brick");
+    generalFontColor.classList.add("color");
+    window.localStorage.setItem("tema", "color");
+  } else if (themeColor === "brick") {
+    gameboyBorder.classList.remove("color");
+    gameboyBorder.classList.add("brick");
+
+    gameboyScreen.classList.remove("color");
+    gameboyScreen.classList.add("brick");
+
+    body.classList.remove("color");
+    body.classList.add("brick");
+
+    searchBar.classList.remove("color");
+    searchBar.classList.add("brick");
+
+    pokeSimpleCardTheme.forEach((x) => {
+      x.classList.remove("color");
+      x.classList.add("brick");
+    });
+
+    pokeStatsCardTheme.forEach((x) => {
+      x.classList.remove("color");
+      x.classList.add("brick");
+    });
+
+    randomPokeText.forEach((x) => {
+      x.classList.remove("color");
+      x.classList.add("brick");
+    });
+
+    arrowsTheme.forEach((x) => {
+      x.classList.remove("color");
+      x.classList.add("brick");
+    });
+
+    statsTitlesTheme.forEach((x) => {
+      x.classList.remove("color");
+      x.classList.add("brick");
+    });
+
+    bolderTextTheme.forEach((x) => {
+      x.classList.remove("color");
+      x.classList.add("brick");
+    });
+
+    simpleCardTextTheme.forEach((x) => {
+      x.classList.remove("color");
+      x.classList.add("brick");
+    });
+
+    generalFontColor.classList.remove("color");
+    generalFontColor.classList.add("brick");
+    window.localStorage.setItem("tema", "brick");
+  }
+}
+function updateRadio() {
+  switch (themeColor) {
+    case "brick":
+      document.getElementById("radioBrick").checked = true;
+      document.getElementById("radioColor").checked = false;
+      break;
+    case "light":
+      document.getElementById("radioBrick").checked = false;
+      document.getElementById("radioColor").checked = true;
+      break;
+
+    default:
+      document.getElementById("radioBrick").checked = false;
+      document.getElementById("radioColor").checked = true;
+      break;
+  }
+}
+
+if (themeColor) {
+  changeThemeLocal();
+  updateRadio();
+}
+

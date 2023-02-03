@@ -30,55 +30,55 @@
         <section id="pokeListBox" class="pokeListBox">
 
           <template id="templateSimpleCard">
-            <section id="" class="pokeSimpleCard" onclick="swapDisplay(this)">
-            <img class="pokePortrait" src="" alt="MissingN0">
-            <h2 class="pokeName2"></h2>
+            <section id="" class="pokeSimpleCard screenChild" onclick="swapDisplay(this)">
+            <img class="pokePortrait screenChild" src="" alt="MissingN0">
+            <h2 class="pokeName2 screenChild"></h2>
             </section>
           </template>
 
          <template id="pokeStatsCard">
-          <section class="pokeStatsCard">
-            <section class="pokePortraitsGrid">
-              <img id="imageStatsFront" class="pokePortraitStats" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png" alt="">
-              <img id="imageStatsBack" class="pokePortraitStats" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png" alt="">
-              <img id="imageStatsFrontShiny" class="pokePortraitStats" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png" alt="">
-              <img id="imageStatsBackShiny" class="pokePortraitStats" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png" alt="">
+          <section class="pokeStatsCard screenChild">
+            <section class="pokePortraitsGrid screenChild">
+              <img id="imageStatsFront" class="pokePortraitStats screenChild" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png" alt="">
+              <img id="imageStatsBack" class="pokePortraitStats screenChild" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png" alt="">
+              <img id="imageStatsFrontShiny" class="pokePortraitStats screenChild" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png" alt="">
+              <img id="imageStatsBackShiny" class="pokePortraitStats screenChild" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png" alt="">
             </section>
-            <section class="pokeStatsBox">
-              <p id="pokeNameStat" class="statsTitles"><span  class="bolderText">Name:</span><br> </p>
-              <p id="pokeIdStat" class="statsTitles"><span class="bolderText">Id:</span><br># </p>
-              <p id="pokeTypeStat" class="statsTitles"><span class="bolderText">Type:</span><br> </p>
-              <p id="pokeAttackStat" class="statsTitles"><span class="bolderText">Attack:</span><br> </p>
-              <p id="pokeDefenseStat" class="statsTitles"><span class="bolderText">Defense:</span><br> </p>
+            <section class="pokeStatsBox screenChild">
+              <p id="pokeNameStat" class="statsTitles screenChild"><span  class="bolderText">Name:</span><br> </p>
+              <p id="pokeIdStat" class="statsTitles screenChild"><span class="bolderText">Id:</span><br># </p>
+              <p id="pokeTypeStat" class="statsTitles screenChild"><span class="bolderText">Type:</span><br> </p>
+              <p id="pokeAttackStat" class="statsTitles screenChild"><span class="bolderText">Attack:</span><br> </p>
+              <p id="pokeDefenseStat" class="statsTitles screenChild"><span class="bolderText">Defense:</span><br> </p>
             </section>
           </section>
          </template>
 
         </section>
 
-        <section id="pokeSearchBar">
-          <label for="pokemonInput">pokesearch</label>
-          <input type="text" name="pokemonInput" id="pokemonInput" placeholder="pikachu" />
+        <section id="pokeSearchBar" class="screenChild">
+          <label for="pokemonInput" class="screenChild">pokesearch</label>
+          <input class="color screenChild" type="text" name="pokemonInput" id="pokemonInput" placeholder="pikachu" />
           <!-- <input id="pokeButton" type="button" value="go!" /> -->
         </section>
 
-        <section id="pokeInputFlexbox">
-          <p class="pokeInput">Or get</p>
+        <section id="pokeInputFlexbox" class="screenChild">
+          <p class="pokeInput screenChild">Or get</p>
           <span id="changeNumberBox">
           <img
-            class="arrows"
+            class="arrows screenChild"
             id="raiseNumber"
             src="assets\expand_less_FILL0_wght400_GRAD0_opsz48.svg"
             alt="" />
           <span id="randomSearchInput">10</span>
           <img
-            class="arrows"
+            class="arrows screenChild"
             id="lowerNumber"
             src="assets\expand_more_FILL0_wght400_GRAD0_opsz48.svg"
             alt=""
              /></span>
-            <p class="pokeInput">random pokemon!</p>
-            <p id="luckyButton">Let's get lucky!</p>
+            <p class="pokeInput screenChild">random pokemon!</p>
+            <p id="luckyButton" class="screenChild">Let's get lucky!</p>
             <label for="orderedPokemonCheck">show in order</label>
             <input type="checkbox" name="" id="orderedPokemonCheck">
         </section>

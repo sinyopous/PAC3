@@ -3,14 +3,17 @@
   --GBBscreen: rgb(156, 155, 102);
   --GBBborder: rgb(83, 72, 90);
   --GBBscreenShadow: rgb(70, 67, 34);
---GBBborderShadow: rgb(54, 54, 54);;
---GBBfilter: ;
+  --GBBborderShadow: rgb(54, 54, 54);
+  --GBBtext: rgb(63, 70, 43);
+  --GBBboldtext: rgb(31, 36, 21);
 
   --GBCbody: rgb(196, 135, 2);
   --GBCscreen: rgb(189, 194, 185);
   --GBCborder: rgb(24, 24, 24);
   --GBCscreenShadow: rgb(14, 14, 14);
   --GBCborderShadow: rgb(136, 93, 1);
+  --GBCtext: rgb(124, 128, 114);
+  --GBCboldtext: rgb(76, 77, 70);
 }
 
 @font-face {
@@ -30,24 +33,22 @@
 
 * {
   font-family: gameboy;
-  filter: blur(0.45px) ;
+  filter: blur(0.45px);
   scroll-behavior: smooth;
 }
 
 html.brick {
-  color: rgb(55, 61, 38);
+  color: var(--GBBtext);
 }
 
 html {
-  color: rgb(104, 107, 96);
+  color: var(--GBCtext);
   scroll-behavior: smooth;
 }
 
 ::placeholder {
-  color: rgb(215, 221, 203);
+  color: rgb(197, 202, 186);
 }
-
-
 
 body {
   background-color: rgb(196, 135, 2);
@@ -149,8 +150,6 @@ a {
   gap: 20px;
 }
 
-
-
 .pokeName {
   grid-area: pokeName;
   margin: 20px 0 0 0;
@@ -237,6 +236,15 @@ a {
 
 .pokeInput {
   color: rgb(131, 134, 129);
+
+}
+
+#pokemonInput.brick {
+  background-color: rgb(174, 175, 127);
+}
+#pokemonInput {
+ background-color: rgb(232, 233, 226);
+ border: 1px solid rgb(144, 145, 116);
 }
 
 #changeNumberBox {
@@ -291,7 +299,6 @@ a {
 }
 
 .pokeSimpleCard.color {
-
 }
 
 .pokeSimpleCard {
@@ -304,11 +311,12 @@ a {
   cursor: pointer;
 }
 
-.pokename2.brick {
-  color: rgb(37, 46, 18);
+.pokeName2.brick {
+  color: var(--GBBtext);
 }
 
 .pokeName2 {
+  color: var(--GBCtext);
   font-size: 20px;
 }
 
@@ -318,10 +326,10 @@ a {
 
 .pokeStatsCard.brick {
   filter: sepia(1) blur(0.3px) contrast(80%);
+  border: 8px double var(--GBBtext);
 }
 
 .pokeStatsCard.color {
-
 }
 
 .pokeStatsCard {
@@ -358,12 +366,16 @@ a {
 }
 
 .statsTitles.brick {
-  color: rgb(55, 61, 38);
+  color: var(--GBBtext);
 }
 
 .statsTitles {
   font-size: 24px;
-  color: rgb(104, 107, 96);
+  color: var(--GBCtext);
+}
+
+.bolderText.brick {
+  color: var(--GBBboldtext);
 }
 
 .bolderText {
