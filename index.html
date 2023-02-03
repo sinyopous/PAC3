@@ -9,18 +9,20 @@
     <script defer src="poke.js"></script>
   </head>
   
-  <body>
+  <body class="color" id="gameboy">
 
-    <section id="gameboyBody">
+    <section id="gameboyBody" class="color">
 
       <img id="redDot" src="assets\redDot.png" alt="">
-      <section id="gameboyScreen">
-        
-        <label for="radioColor">color</label>
-        <input type="radio" name="theme" id="radioColor" value="color" checked>
-        <label for="radioBrick">brick</label>
-        <input type="radio" name="theme" id="radioBrick" value="brick">
-
+      
+      <section id="gameboyScreen" class="color">
+       
+        <section id="radioButtonBox">
+          <label for="radioColor">color</label>
+          <input class="radioButton" type="radio" name="theme" id="radioColor" value="color" checked>
+          <label for="radioBrick">brick</label>
+          <input id="radioBrick" class="radioButton" type="radio" name="theme" id="radioBrick" value="brick">
+        </section>
 
           <a id="returnButton" onclick="pokeReturn()">return</a>
        
@@ -81,7 +83,7 @@
             <input type="checkbox" name="" id="orderedPokemonCheck">
         </section>
         <p id="swapCardsButton">swap</p>
-
+     
       </section>
       
 

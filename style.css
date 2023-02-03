@@ -1,3 +1,18 @@
+:root {
+  --GBBbody: rgb(141, 141, 141);
+  --GBBscreen: rgb(156, 155, 102);
+  --GBBborder: rgb(83, 72, 90);
+  --GBBscreenShadow: rgb(70, 67, 34);
+--GBBborderShadow: rgb(54, 54, 54);;
+--GBBfilter: ;
+
+  --GBCbody: rgb(196, 135, 2);
+  --GBCscreen: rgb(189, 194, 185);
+  --GBCborder: rgb(24, 24, 24);
+  --GBCscreenShadow: rgb(14, 14, 14);
+  --GBCborderShadow: rgb(136, 93, 1);
+}
+
 @font-face {
   font-family: "gameboy";
   src: url(assets/Early\ GameBoy.ttf);
@@ -14,9 +29,17 @@
 }
 
 * {
-  color: rgb(104, 107, 96);
   font-family: gameboy;
-  filter: blur(0.4px);
+  filter: blur(0.45px) ;
+  scroll-behavior: smooth;
+}
+
+html.brick {
+  color: rgb(55, 61, 38);
+}
+
+html {
+  color: rgb(104, 107, 96);
   scroll-behavior: smooth;
 }
 
@@ -24,12 +47,18 @@
   color: rgb(215, 221, 203);
 }
 
-html {
-  scroll-behavior: smooth;
-}
+
 
 body {
   background-color: rgb(196, 135, 2);
+}
+
+body.brick {
+  background-color: var(--GBBbody);
+}
+
+body.color {
+  background-color: var(--GBCbody);
 }
 
 h1 {
@@ -46,6 +75,16 @@ h2 {
 
 a {
   text-decoration: none;
+}
+
+#gameboyBody.brick {
+  background-color: var(--GBBborder);
+  border: solid 3px var(--GBBborderShadow);
+}
+
+#gameboyBody.color {
+  background-color: var(--GBCborder);
+  border: solid 3px var(--GBCborderShadow);
 }
 
 #gameboyBody {
@@ -68,6 +107,15 @@ a {
   left: 30px;
 }
 
+#screenFilter.brick {
+  width: 200px;
+  width: 200px;
+  background-color: green;
+  /* z-index: 10; */
+  /* display: none; */
+  filter: blur(0.5);
+}
+
 #gameboyScreen {
   position: relative;
   background-color: rgb(189, 194, 185);
@@ -82,6 +130,16 @@ a {
   justify-content: space-evenly;
   padding: 50px 0;
 }
+
+#gameboyScreen.brick {
+  background-color: var(--GBBscreen);
+  border: 7px solid var(--GBBscreenShadow);
+}
+
+#gameboyScreen.color {
+  background-color: var(--GBCscreen);
+  border: 5px solid var(--GBCscreenShadow);
+}
 .pokeListBox {
   /* margin: 50px; */
   display: flex;
@@ -90,6 +148,8 @@ a {
   flex-wrap: wrap;
   gap: 20px;
 }
+
+
 
 .pokeName {
   grid-area: pokeName;
@@ -171,6 +231,10 @@ a {
   top: -50px;
 }
 
+.pokeInput.brick {
+  color: rgb(92, 102, 64);
+}
+
 .pokeInput {
   color: rgb(131, 134, 129);
 }
@@ -206,6 +270,10 @@ a {
   margin: 0 15px;
 }
 
+.arrows.brick {
+  filter: contrast(200%) hue-rotate(10deg);
+}
+
 .arrows {
   cursor: pointer;
 }
@@ -218,6 +286,14 @@ a {
   cursor: pointer;
 }
 
+.pokeSimpleCard.brick {
+  filter: sepia(1) blur(0.3px) contrast(80%);
+}
+
+.pokeSimpleCard.color {
+
+}
+
 .pokeSimpleCard {
   display: flex;
   flex-direction: column;
@@ -228,12 +304,24 @@ a {
   cursor: pointer;
 }
 
+.pokename2.brick {
+  color: rgb(37, 46, 18);
+}
+
 .pokeName2 {
   font-size: 20px;
 }
 
 #pokeSearchBar {
   margin-top: 100px;
+}
+
+.pokeStatsCard.brick {
+  filter: sepia(1) blur(0.3px) contrast(80%);
+}
+
+.pokeStatsCard.color {
+
 }
 
 .pokeStatsCard {
@@ -269,6 +357,10 @@ a {
   align-items: center;
 }
 
+.statsTitles.brick {
+  color: rgb(55, 61, 38);
+}
+
 .statsTitles {
   font-size: 24px;
   color: rgb(104, 107, 96);
@@ -288,4 +380,11 @@ a {
 
 #returnButton:hover {
   text-shadow: 0 0 2px rgb(52, 53, 48);
+}
+
+#radioButtonBox {
+  display: flex;
+  position: absolute;
+  left: 20px;
+  top: 20px;
 }

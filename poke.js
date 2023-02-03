@@ -456,10 +456,7 @@ const pokeReturn = () => {
   let onePokeSimpleCard = document.querySelector(".pokeSimpleCard");
   let onePokeStatsCard = document.querySelector(".pokeStatsCard");
   let id = searchUrlId();
-  if (
-    !onePokeSimpleCard &&
-    !onePokeStatsCard
-  ) {
+  if (!onePokeSimpleCard && !onePokeStatsCard) {
     document.location.reload();
   } else {
     if (id) {
@@ -550,3 +547,107 @@ if (searchUrlId()) {
 } else {
   printXRandomCards();
 }
+
+//-----------------------------THEMES-----------------------------------
+
+function changeTheme() {
+  console.dir(this);
+  const pokeSimpleCardTheme = document.querySelectorAll(".pokeSimpleCard");
+  const pokeStatsCardTheme = document.querySelectorAll(".pokeStatsCard");
+  const generalFontColor = document.querySelector("html");
+  const randomPokeText = document.querySelectorAll(".pokeInput");
+  const arrowsTheme =  document.querySelectorAll(".arrows");
+  const statsTitlesTheme = document.querySelectorAll(".statsTitles");
+
+  if (this.value === "color") {
+    gameboyBorder.classList.remove("brick");
+    gameboyBorder.classList.add("color");
+
+    gameboyScreen.classList.remove("brick");
+    gameboyScreen.classList.add("color");
+
+    body.classList.remove("brick");
+    body.classList.add("color");
+
+    pokeSimpleCardTheme.forEach((x) => {
+      x.classList.remove("brick");
+      x.classList.add("color");
+    });
+
+    pokeStatsCardTheme.forEach((x) => {
+      x.classList.remove("brick");
+      x.classList.add("color");
+    });
+    
+    randomPokeText.forEach((x) => {
+      x.classList.remove("brick");
+      x.classList.add("color");
+    });
+
+    arrowsTheme.forEach((x) => {
+      x.classList.remove("brick");
+      x.classList.add("color");
+    });
+
+    statsTitlesTheme.forEach((x) => {
+      x.classList.remove("brick");
+      x.classList.add("color");
+    });
+   
+    generalFontColor.classList.remove("brick");
+    generalFontColor.classList.add("color");
+  } else if (this.value === "brick") {
+    gameboyBorder.classList.remove("color");
+    gameboyBorder.classList.add("brick");
+
+    gameboyScreen.classList.remove("color");
+    gameboyScreen.classList.add("brick");
+
+    body.classList.remove("color");
+    body.classList.add("brick");
+
+    pokeSimpleCardTheme.forEach((x) => {
+      x.classList.remove("color");
+      x.classList.add("brick");
+    });
+
+    pokeStatsCardTheme.forEach((x) => {
+      x.classList.remove("color");
+      x.classList.add("brick");
+    });
+
+    randomPokeText.forEach((x) => {
+      x.classList.remove("color");
+      x.classList.add("brick");
+    });
+
+    arrowsTheme.forEach((x) => {
+      x.classList.remove("color");
+      x.classList.add("brick");
+    });
+
+    statsTitlesTheme.forEach((x) => {
+      x.classList.remove("color");
+      x.classList.add("brick");
+    });
+  
+    generalFontColor.classList.remove("color");
+    generalFontColor.classList.add("brick");
+  }
+}
+
+const radioButtons = document.querySelectorAll('input[name="theme"]');
+radioButtons.forEach((x) => x.addEventListener("change", changeTheme));
+
+const radioBrick = document.getElementById("radioBrick");
+console.log(radioBrick.value);
+
+const body = document.querySelector("#gameboy");
+const gameboyScreen = document.querySelector("#gameboyBody");
+const gameboyBorder = document.querySelector("#gameboyScreen");
+const pokeSimpleCardTheme = document.querySelectorAll(".pokeSimpleCard");
+const pokeStatsCardTheme = document.querySelectorAll(".pokeStatsCard");
+const generalFontColor = document.querySelector("html");
+const randomPokeText = document.querySelectorAll(".pokeInput");
+const arrowsTheme =  document.querySelectorAll(".arrows");
+const statsTitlesTheme = document.querySelectorAll(".statsTitles");
